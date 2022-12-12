@@ -27,6 +27,5 @@ public class Main {
         list.insertAt(3, 30);
         list.deleteAt(3);
         list.show();
-
     }
 }
