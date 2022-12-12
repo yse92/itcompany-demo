@@ -2,7 +2,9 @@ package com.solvd;
 
 import com.solvd.customLinkedList.CustomLinkedList;
 import com.solvd.exceptions.IncorrectFileNameException;
-import org.apache.logging.log4j.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+//import org.apache.logging.log4j.*;
 import java.io.IOException;
 
 public class Main {

@@ -11,17 +11,11 @@ import com.solvd.customLinkedList.CustomLinkedList;
 import java.util.*;
 
 public class Generator{
-    private CustomLinkedList<SoftwareDeveloper> employees = new CustomLinkedList<>() {};
-    private Queue<Task> tasks = new LinkedList<>();
-    private Map<UUID, String> inventory = new HashMap<UUID, String>();
+    private static CustomLinkedList<SoftwareDeveloper> employees = new CustomLinkedList<>() {};
+    private static Queue<Task> tasks = new LinkedList<>();
+    private static Map<UUID, String> inventory = new HashMap<UUID, String>();
 
-    public Generator(Company company) {
-        generateEmployees(company);
-        generateTasks();
-        generateNewInventory();
-    }
-
-    public void generateEmployees(Company company) {
+    public static CustomLinkedList<SoftwareDeveloper> generateEmployees(Company company) {
         employees.insert(new SoftwareDeveloper(
                 30,
                 "Yaroslav",
@@ -43,9 +37,10 @@ public class Generator{
                 new Position("System Archytect", 12000f, new HashSet<String>(Arrays.asList("devising computer system", "design and implementation of complex systems"))),
                 new Qualification(8, new String[] {"Lviv University of Ivana Franka"})
         ));
+        return employees;
     }
 
-    public void generateTasks() {
+    public static Queue<Task> generateTasks() {
         tasks.add(
                 new Task(
                         1,
@@ -73,12 +68,14 @@ public class Generator{
                         Priority.HIGH
                 )
         );
+        return tasks;
     }
 
-    public void generateNewInventory() {
+    public static String[] generateNewInventory() {
         inventory.put(UUID.randomUUID(), "Desk Stepler");
         inventory.put(UUID.randomUUID(), "Erasable Marker");
         inventory.put(UUID.randomUUID(), "Paper Clips");
         inventory.put(UUID.randomUUID(), "Fax Paper");
+        return inventory.values().toArray(new String[0]);
     }
 }
