@@ -17,7 +17,7 @@ public class Reflection {
             e.printStackTrace();
         }
     }
-    public static void printMethod(Object someClass, String method, Object... args) {
+    public static void invokeMethod(Object someClass, String method, Object... args) {
         try {
             Class<?>[] params = new Class[args.length];
             for (int i = 0; i < args.length; i++) {

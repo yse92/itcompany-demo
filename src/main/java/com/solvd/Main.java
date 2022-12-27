@@ -55,9 +55,10 @@ public class Main {
 //        Reflection.printField(meeting, "participants");
 //        System.out.println("-------------------------------------");
 //        //invoke private method
-//        Reflection.printMethod(meeting, "addParticipant", employee.get(0));
+//        Reflection.invokeMethod(meeting, "addParticipant", employee.get(0));
 //        System.out.println("-------------------------------------");
-//        Reflection.printAllMethods(employee.get(0));
+//        Reflection.printAllMethods(employee.get(0))
+// // приклад з getter !!!
         /* Stream */
 //        List<Customer> customers = Generator.generateCustomers();
 //        ArrayList<Employee> employees = Generator.generateEmployees();
