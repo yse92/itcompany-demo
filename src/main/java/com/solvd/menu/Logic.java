@@ -2,6 +2,7 @@ package com.solvd.menu;
 
 import com.solvd.company.staff.Position;
 import com.solvd.company.staff.Qualification;
+import com.solvd.company.staff.Skills;
 import com.solvd.company.staff.SoftwareDeveloper;
 import com.solvd.exceptions.IncorrectFileNameException;
 import com.solvd.utils.FilesUtil;
@@ -77,6 +78,30 @@ public class Logic {
         return new Qualification(experience, education.toArray(buf));
     }
 
+    public Skills getSkills() {
+        System.out.println("Enter skills:\n1 - Junior, 2 - Middle, 3 - Senior");
+        int answer = sc.nextInt();
+        Skills skill = Skills.NEWBIE;
+        boolean isQuit = true;
+        while(isQuit) {
+            switch (answer) {
+                case 1:
+                    skill = Skills.JUNIOR;
+                    isQuit = false;
+                    break;
+                case 2:
+                    skill = Skills.MIDDLE;
+                    isQuit = false;
+                    break;
+                case 3:
+                    skill = Skills.SENIOR;
+                    isQuit = false;
+                    break;
+            }
+        }
+        return skill;
+    }
+
     public SoftwareDeveloper getSoftwareDeveloperInfo() {
         System.out.println("Enter name: ");
         String name = sc.nextLine();
@@ -84,8 +109,9 @@ public class Logic {
         String surname = sc.nextLine();
         System.out.println("Enter age: ");
         int age = sc.nextInt();
+        Skills skill = getSkills();
         Qualification qualification = getQualififcation();
         Position position = getPosition();
-        return new SoftwareDeveloper(age, name, surname, position, qualification);
+        return new SoftwareDeveloper(age, name, surname, position, qualification, skill);
     }
 }

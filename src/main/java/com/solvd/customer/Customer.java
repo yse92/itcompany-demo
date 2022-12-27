@@ -1,9 +1,7 @@
 package com.solvd.customer;
 
+import com.solvd.utils.RandomDigitGenerator;
 import com.solvd.contacts.Contacts;
-
-import java.util.List;
-import java.util.Random;
 
 import static com.solvd.Main.logger;
 
@@ -13,13 +11,17 @@ public class Customer implements Payable{
     private Contacts contacts;
     private Status paymentStatus;
 
-    public Customer() {
-    }
-
     public Customer(String name, String surname, Contacts contacts) {
         this.name = name;
         this.surname = surname;
         this.contacts = contacts;
+    }
+
+    public Customer(String name, String surname, Contacts contacts, Status paymentStatus) {
+        this.name = name;
+        this.surname = surname;
+        this.contacts = contacts;
+        this.paymentStatus = paymentStatus;
     }
 
     public String getName() {
@@ -46,6 +48,14 @@ public class Customer implements Payable{
         this.contacts = contacts;
     }
 
+    public Status getPaymentStatus() {
+        return paymentStatus;
+    }
+
+    public void setPaymentStatus(Status paymentStatus) {
+        this.paymentStatus = paymentStatus;
+    }
+
     @Override
     public void initiatePayments() {
         logger.info("Payment has been initiated successfully!");
@@ -53,13 +63,22 @@ public class Customer implements Payable{
 
     @Override
     public String status() {
-        return "Payment status is " + paymentStatus;
+        return getPaymentStatus().toString();
     }
 
     @Override
-    public String getPayment() {
-        Random rnd = new Random();
-        int id = rnd.nextInt();
-        return "Payment id " + id;
+    public Integer getPayment() {
+        RandomDigitGenerator randomDigitGenerator = new RandomDigitGenerator();
+        return randomDigitGenerator.get();
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", \ncontacts=" + contacts.toString() +
+                ", \npaymentStatus=" + paymentStatus +
+                "}\n";
     }
 }

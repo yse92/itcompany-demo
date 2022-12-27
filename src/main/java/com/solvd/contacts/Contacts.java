@@ -38,4 +38,12 @@ public final class Contacts {
         this.address = address;
     }
 
+    @Override
+    public String toString() {
+        return "Contacts{" +
+                "email='" + email + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", address='" + address + '\'' +
+                '}';
+    }
 }

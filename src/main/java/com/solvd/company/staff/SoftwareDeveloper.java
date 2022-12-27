@@ -3,23 +3,36 @@ import static com.solvd.Main.logger;
 import static java.lang.System.*;
 
 import com.solvd.company.project.Bug;
+import com.solvd.company.project.ErrorType;
 import com.solvd.company.project.Task;
 import com.solvd.exceptions.FixableBugException;
 import com.solvd.exceptions.SolvableTaskException;
 
+import java.util.HashSet;
 import java.util.Objects;
 
 public class SoftwareDeveloper extends Employee implements Fixable, Solvable, Stateable{
-    public SoftwareDeveloper(int age, String name, String surname, Position position, Qualification qualification) {
+    private Skills skill;
+
+    public SoftwareDeveloper(int age, String name, String surname, Position position, Qualification qualification, Skills skill) {
         super(age, name, surname, position, qualification);
+        this.skill = skill;
+    }
+
+    public Skills getSkill() {
+        return skill;
+    }
+
+    public void setSkill(Skills skill) {
+        this.skill = skill;
     }
 
     public void fixBug(Bug bug) throws FixableBugException {
-        if (bug.getStatusCode() == 666) {
+        if (bug.getErrorType() == ErrorType.SYNTAX) {
             throw new FixableBugException();
         }
         bug.setFixed(true);
-        logger.info("Bug " + bug.getStatusCode() + " has been successfully fixed!");
+        logger.info("Bug " + bug.getErrorType() + " has been successfully fixed!");
     }
 
     public void solveTask(Task task) throws SolvableTaskException {

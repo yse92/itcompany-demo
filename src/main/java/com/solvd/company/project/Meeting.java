@@ -2,7 +2,9 @@ package com.solvd.company.project;
 
 import com.solvd.company.department.IPrintable;
 import com.solvd.company.staff.Employee;
+import org.apache.commons.lang3.ArrayUtils;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -12,12 +14,12 @@ public class Meeting implements IMeeting, IPrintable {
     private Date time;
     private Issue issue;
 
-    private ArrayList<Employee> participants = new ArrayList<>();
+    private Employee [] participants;
 
     public Meeting() {
     }
 
-    public Meeting(Date time, Issue issue, ArrayList<Employee> participants) {
+    public Meeting(Date time, Issue issue, Employee [] participants) {
         this.time = time;
         this.issue = issue;
         this.participants = participants;
@@ -39,22 +41,22 @@ public class Meeting implements IMeeting, IPrintable {
         this.issue = issue;
     }
 
-    public ArrayList<Employee> getParticipants() {
+    public Employee [] getParticipants() {
         return participants;
     }
 
-    public void setParticipants(ArrayList<Employee> participants) {
+    public void setParticipants(Employee [] participants) {
         this.participants = participants;
     }
 
     @Override
-    public void assembleMeeting(Employee... employees) {
-        Collections.addAll(participants, employees);
+    public void assembleMeeting(Employee[] employees) {
+        participants = ArrayUtils.addAll(participants, employees);
     }
 
-    @Override
-    public void addParticipant(Employee employee) {
-        participants.add(employee);
+    private void addParticipant(Employee employee) {
+        participants = ArrayUtils.add(participants, employee);
+        System.out.println("Participant " + employee.getName() + " successfully added!");
     }
 
     @Override
@@ -68,8 +70,7 @@ public class Meeting implements IMeeting, IPrintable {
             throw new NullPointerException("Array of participants should be initialized");
         }
         System.out.println("Date: " + this.time + "\nIssue: " + this.issue);
-        for (Employee participant : participants) {
-            System.out.println("Name: " + participant.getName() + "\nSurname: " + participant.getSurname());
-        }
+        Arrays.stream(participants).forEach(participant ->
+                System.out.println("Name: " + participant.getName() + "\nSurname: " + participant.getSurname()));
     }
 }

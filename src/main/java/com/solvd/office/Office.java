@@ -45,7 +45,7 @@ public class Office {
 
     public void showInventory() {
         for(Map.Entry<Integer, String> item : inventory.entrySet()){
-            System.out.printf("Key: %d  Value: %s \n", item.getKey(), item.getValue());
+            System.out.printf("Id: %d  Item: %s \n", item.getKey(), item.getValue());
         }
     }
 

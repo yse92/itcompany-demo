@@ -3,25 +3,25 @@ package com.solvd.company.project;
 import java.util.Objects;
 
 public class Bug extends Issue {
-    private int statusCode;
+    private ErrorType errorType;
     private boolean fixed;
     private String message;
 
     public Bug() {
     }
 
-    public Bug(int statusCode, boolean fixed, String message) {
-        this.statusCode = statusCode;
+    public Bug(ErrorType errorType, boolean fixed, String message) {
+        this.errorType = errorType;
         this.fixed = fixed;
         this.message = message;
     }
 
-    public int getStatusCode() {
-        return statusCode;
+    public ErrorType getErrorType() {
+        return errorType;
     }
 
-    public void setStatusCode(int statusCode) {
-        this.statusCode = statusCode;
+    public void setErrorType(ErrorType errorType) {
+        this.errorType = errorType;
     }
 
     public boolean isFixed() {
@@ -46,19 +46,19 @@ public class Bug extends Issue {
         if (o == null) return false;
         if (getClass() != o.getClass()) return false;                       //symmetry
         Bug bug = (Bug) o;
-        return  statusCode == bug.statusCode &&
+        return errorType == bug.errorType &&
                 fixed == bug.fixed && Objects.equals(message, bug.message);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(statusCode, fixed, message);
+        return Objects.hash(errorType, fixed, message);
     }
 
     @Override
     public String toString() {
         return "Bug: " +
-                "statusCode = " + statusCode +
+                "errorType = " + errorType +
                 " fixed = " + fixed +
                 " message = " + message;
     }

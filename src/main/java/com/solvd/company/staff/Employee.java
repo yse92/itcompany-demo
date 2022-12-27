@@ -31,10 +31,8 @@ public abstract class Employee {
     }
 
     public void setAge(int age) throws InvalidAgeException {
-        if (age < 18) {
-            throw new InvalidAgeException("Employee must be 18 year old at least");
-        } else if (age > 80) {
-            throw new InvalidAgeException("Employee must be less than 80 year old");
+        if (age < 18 || age > 80) {
+            throw new InvalidAgeException("Employee must be 18-80 year old");
         } else {
             this.age = age;
             logger.info("Age is validated successfully!");
