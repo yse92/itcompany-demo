@@ -3,12 +3,16 @@ package com.solvd;
 import com.solvd.collections.Generator;
 import com.solvd.company.department.SalesDepartment;
 import com.solvd.company.project.Meeting;
+import com.solvd.company.project.Task;
 import com.solvd.company.staff.*;
 import com.solvd.contacts.Contacts;
 import com.solvd.customer.Customer;
 import com.solvd.customer.Status;
 import com.solvd.exceptions.IncorrectFileNameException;
 import com.solvd.exceptions.InvalidQualificationException;
+import com.solvd.menu.Logic;
+import com.solvd.multithreading.CustomThreadPool;
+import com.solvd.multithreading.DemoTask;
 import com.solvd.reflection.Reflection;
 import com.solvd.utils.Printer;
 import org.apache.logging.log4j.LogManager;
@@ -76,6 +80,7 @@ public class Main {
 //        salesDepartment.checkStatus(Status.CANCELED);
 //        Printer.print("map");
 //        salesDepartment.getEmployeesFullNames().forEach(System.out::println);
-
+        /* Threads */
+        Logic.executeThreadsDemo(7);
     }
 }

@@ -1,14 +1,12 @@
 package com.solvd.company.project;
 
-import com.solvd.company.staff.Employee;
-
 import java.util.Date;
 
 public class Task extends Issue {
     private Date deadline;
     private Priority priority;
 
-    public Task() {
+    public Task(int i) {
     }
 
     public Task(int id, String title, String type, Date deadline, Priority priority) {

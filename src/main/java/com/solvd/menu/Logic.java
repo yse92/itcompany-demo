@@ -5,6 +5,8 @@ import com.solvd.company.staff.Qualification;
 import com.solvd.company.staff.Skills;
 import com.solvd.company.staff.SoftwareDeveloper;
 import com.solvd.exceptions.IncorrectFileNameException;
+import com.solvd.multithreading.CustomThreadPool;
+import com.solvd.multithreading.DemoTask;
 import com.solvd.utils.FilesUtil;
 
 import java.io.IOException;
@@ -113,5 +115,14 @@ public class Logic {
         Qualification qualification = getQualififcation();
         Position position = getPosition();
         return new SoftwareDeveloper(age, name, surname, position, qualification, skill);
+    }
+
+    public static void executeThreadsDemo(int num) {
+        CustomThreadPool pool = new CustomThreadPool(7);
+
+        for(int i = 0; i < num; i++) {
+            DemoTask task = new DemoTask(String.valueOf(i));
+            pool.execute(task);
+        }
     }
 }
