@@ -1,6 +1,0 @@
-class com.solvd.company.staff.SoftwareDeveloper
-Yaroslav
-Moroz
-30
-Position{name='Software Developer', salary=5500.0, responsibilities=[Add features]}
-Qualification{experience=1, education=[ZNTU]}
