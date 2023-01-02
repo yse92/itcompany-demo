@@ -1,12 +1,16 @@
 package com.solvd.reflection;
 
+import com.solvd.collections.Generator;
+import com.solvd.company.project.Meeting;
 import com.solvd.company.staff.Employee;
+import com.solvd.company.staff.SoftwareDeveloper;
 import com.solvd.customer.Customer;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
+import java.util.ArrayList;
 
 public class Reflection {
     public static void printField(Object someClass, String field) {
@@ -47,5 +51,16 @@ public class Reflection {
         for (Field field : declaredFields) {
             System.out.println(field);
         }
+    }
+    public static void showReflectionExample() {
+        Meeting meeting = Generator.generateMeeting();
+        ArrayList<SoftwareDeveloper> developers = Generator.generateSoftwareDevelopers();
+        //get private fields
+        Reflection.printField(meeting, "participants");
+        System.out.println("-------------------------------------");
+        //invoke private method
+        Reflection.invokeMethod(meeting, "addParticipant", developers.get(0));
+        System.out.println("-------------------------------------");
+        Reflection.printAllMethods(developers.get(0));
     }
 }

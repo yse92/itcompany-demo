@@ -24,7 +24,7 @@ public class SalesDepartment extends Department implements IPrintable {
         this.customers = customers;
     }
 
-    public SalesDepartment(String name, ArrayList<Employee> employees, Contacts contacts, Customer[] customers) {
+    public SalesDepartment(String name, ArrayList<? extends Employee> employees, Contacts contacts, Customer[] customers) {
         super(name, employees, contacts);
         this.customers = customers;
     }

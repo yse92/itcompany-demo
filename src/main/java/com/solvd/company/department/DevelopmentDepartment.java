@@ -2,6 +2,7 @@ package com.solvd.company.department;
 
 import com.solvd.company.staff.Position;
 import com.solvd.company.staff.Qualification;
+import com.solvd.company.staff.Skills;
 import com.solvd.company.staff.SoftwareDeveloper;
 import com.solvd.exceptions.InvalidQualificationException;
 
@@ -16,13 +17,22 @@ public class DevelopmentDepartment extends Department{
             throws InvalidQualificationException {
         SoftwareDeveloper developer = s.get();
         if (developer.getName() == null || "".equals(developer.getName())) {
-            developer.setName("default");
+            developer.setName("Default name");
         }
-        developer.setQualification(new Qualification(new Random().nextInt(10) + 1, new String[] {"abc", "def"}));
-        developer.setPosition(new Position("Junior Dev", 800f, new HashSet<String>() {{
+        if (developer.getSurname() == null || "".equals(developer.getSurname())) {
+            developer.setSurname("Default surname");
+        }
+        developer.setQualification(
+                new Qualification(
+                        new Random().nextInt(10) + 2,
+                        new String[] {"School", "University"}
+                )
+        );
+        developer.setPosition(new Position("java Developer", 1000f, new HashSet<>() {{
             add("responsibilty 1");
             add("responsibilty 2");
         }}));
+        developer.setSkill(Skills.JUNIOR);
         return developer;
     }
 

@@ -19,6 +19,16 @@ public class SoftwareDeveloper extends Employee implements Fixable, Solvable, St
         this.skill = skill;
     }
 
+    public SoftwareDeveloper() {
+
+    }
+
+    //only for factory(() -> new Developer("name", "surname"));
+    public SoftwareDeveloper(String name, String surname) {
+        setName(name);
+        setSurname(surname);
+    }
+
     public Skills getSkill() {
         return skill;
     }

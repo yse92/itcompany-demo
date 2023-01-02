@@ -47,4 +47,13 @@ public class CustomThreadPool {
             }
         }
     }
+
+    public static void executeThreadsDemo(int num) {
+        CustomThreadPool pool = new CustomThreadPool(7);
+
+        for(int i = 0; i < num; i++) {
+            DemoTask task = new DemoTask(String.valueOf(i));
+            pool.execute(task);
+        }
+    }
 }

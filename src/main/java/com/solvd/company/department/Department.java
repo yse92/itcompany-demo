@@ -8,14 +8,14 @@ import java.util.Collection;
 
 public abstract class Department {
     private String name;
-    private ArrayList<Employee> employees = new ArrayList<>();
+    private ArrayList<? extends Employee> employees = new ArrayList<>();
     private Contacts contacts;
 
     public Department() {
 
     }
 
-    public Department(String name, ArrayList<Employee> employees, Contacts contacts) {
+    public Department(String name, ArrayList<? extends Employee> employees, Contacts contacts) {
         this.name = name;
         this.employees = employees;
         this.contacts = contacts;
@@ -37,7 +37,7 @@ public abstract class Department {
         this.contacts = contacts;
     }
 
-    public ArrayList<Employee> getEmployees() {
+    public ArrayList<? extends Employee> getEmployees() {
         return employees;
     }
 

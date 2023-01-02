@@ -8,17 +8,17 @@ import com.solvd.exceptions.IncorrectFileNameException;
 import com.solvd.multithreading.CustomThreadPool;
 import com.solvd.multithreading.DemoTask;
 import com.solvd.utils.FilesUtil;
-
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.*;
 
 public class Logic {
     private static final Scanner sc = new Scanner(System.in);
 
-    public void run() throws IOException, IncorrectFileNameException {
+    public void printDevelopers(ArrayList<SoftwareDeveloper> softwareDevelopers) throws IOException, IncorrectFileNameException {
         try {
-            SoftwareDeveloper softwareDeveloper = getSoftwareDeveloperInfo();
-            FilesUtil.writeToTextFile( "test.txt", softwareDeveloper.toString());
+            FilesUtil.writeToTextFile( "test.txt", softwareDevelopers.toString());
+            softwareDevelopers.forEach(dev -> System.out.println(dev.toString()));
         } catch(IOException e) {
             throw new IOException("Incorrect file operation ", e);
         } catch(IncorrectFileNameException e) {
@@ -117,12 +117,17 @@ public class Logic {
         return new SoftwareDeveloper(age, name, surname, position, qualification, skill);
     }
 
-    public static void executeThreadsDemo(int num) {
-        CustomThreadPool pool = new CustomThreadPool(7);
-
-        for(int i = 0; i < num; i++) {
-            DemoTask task = new DemoTask(String.valueOf(i));
-            pool.execute(task);
+    public ArrayList<SoftwareDeveloper> getSoftwareDeveloperList() {
+        ArrayList<SoftwareDeveloper> developers = new ArrayList<>();
+        boolean Quit = true;
+        while(Quit) {
+            developers.add(getSoftwareDeveloperInfo());
+            System.out.println("Add more developers? y/n ");
+            String answer = sc.nextLine();
+            if (answer.equals("n")) {
+                Quit = false;
+            }
         }
+        return developers;
     }
 }
