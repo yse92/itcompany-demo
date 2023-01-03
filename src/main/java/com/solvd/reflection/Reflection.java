@@ -16,7 +16,10 @@ public class Reflection {
     public static void printField(Object someClass, String field) {
         try {
             Field targetField = someClass.getClass().getDeclaredField(field);
-            System.out.println(targetField);
+            System.out.println("Field name: "+targetField.getName());
+            System.out.println("Field type: "+targetField.getType());
+            System.out.println("Field modifiers: "+targetField.getModifiers());
+            System.out.println("Field declared class: "+targetField.getDeclaringClass());
         } catch (NoSuchFieldException e) {
             e.printStackTrace();
         }
@@ -43,7 +46,11 @@ public class Reflection {
     public static void printAllMethods(Object someClass) {
         Method[] declaredMethods = someClass.getClass().getDeclaredMethods();
         for (Method method : declaredMethods) {
-            System.out.println(method);
+            System.out.println("\t\t\t* * * * *");
+            System.out.println("Method name: " + method.getName());
+            System.out.println("Method parameter's count: " + method.getParameterCount());
+            System.out.println("Method return type: " + method.getReturnType());
+            System.out.println("Method modifiers: " + method.getModifiers());
         }
     }
     public static void printAllFields(Object someClass) {

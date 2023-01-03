@@ -14,28 +14,6 @@ public class QAEngineer extends Employee{
     }
 
     public void performTesting(TestType type) {
-        switch (type) {
-            case UNIT:
-                System.out.println("Perform Unit Testing");
-                break;
-            case SMOKE:
-                System.out.println("Perform Smoke Testing");
-                break;
-            case SYSTEM:
-                System.out.println("Perform System Testing");
-                break;
-            case ACCEPTANCE:
-                System.out.println("Perform Acceptance Testing");
-                break;
-            case REGRESSION:
-                System.out.println("Perform Regression Testing");
-                break;
-            case INTEGRATION:
-                System.out.println("Perform Integration Testing");
-                break;
-            default:
-                System.out.println("Drinking coffee ^_^");
-        }
-
+        System.out.println("Performing : " + type.getName());
     }
 }
