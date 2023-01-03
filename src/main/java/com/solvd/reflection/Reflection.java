@@ -55,8 +55,11 @@ public class Reflection {
     }
     public static void printAllFields(Object someClass) {
         Field[] declaredFields = someClass.getClass().getDeclaredFields();
-        for (Field field : declaredFields) {
-            System.out.println(field);
+        for (Field targetField : declaredFields) {
+            System.out.println("Field name: " + targetField.getName());
+            System.out.println("Field type: " + targetField.getType());
+            System.out.println("Field modifiers: " + targetField.getModifiers());
+            System.out.println("Field declared class: " + targetField.getDeclaringClass());
         }
     }
     public static void showReflectionExample() {
